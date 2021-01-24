@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Button, Grid, Header, Divider, Image,Input, Card, Modal, Form, Container} from 'semantic-ui-react'
+import {Button, Grid, Header, Divider, Image,Icon, Card, Modal, Form, Container} from 'semantic-ui-react'
 import '../App.css'
 import WildFires from '../PostsExamples/WildFires'
 import Marine from '../PostsExamples/Marine'
@@ -27,7 +27,7 @@ return (
         >Update Info</Button>}
       >
       <Modal.Header>Update Your Information</Modal.Header>
-      <Form/*onSubmit={onSubmit}*/ noValidate>
+      <Form /*onSubmit={onSubmit}*/ noValidate>
         <Container textAlign= 'center' id ="update">
         
             <Form.Input
@@ -70,9 +70,47 @@ return (
       </Modal.Actions>
       
     </Modal>
-    
     </Grid.Column> 
     </Grid>
+    <Divider section />
+    <Grid>
+    <Grid.Column textAlign= 'center'>
+      <Form>
+      <Form.Input 
+      label="Title"
+      placeholder="Enter a Title"
+      name = "title"
+      type = "text"
+      />
+
+      <Form.Input 
+      label="Topic"
+      placeholder="Enter a Topic"
+      name = "topic"
+      type = "text"
+      />
+
+      <Form.TextArea 
+      label="Body"
+      placeholder=""
+      name = "title"
+      type = "text"
+      />
+
+      <Button 
+      onClick={()=>{console.log("hi")}}
+      animated
+      floated='right'
+      >
+      <Button.Content visible>Post</Button.Content>
+      <Button.Content hidden>
+      <Icon name='arrow right' />
+      </Button.Content>
+      </Button>
+      </Form>
+      </Grid.Column>
+      </Grid>
+
     <Divider section />
         <Card id = "templates" className = 'ui centered card'>
           <Card.Content>

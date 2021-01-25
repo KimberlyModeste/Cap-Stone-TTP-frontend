@@ -6,13 +6,10 @@ import gql from 'graphql-tag';
 import { AuthContext } from '../context/auth';
 import { useForm } from '../util/hooks';
 
-
 function Login(props) {
-
-
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
-  
+
   const { onChange, onSubmit, values } = useForm(loginUserCallback, {
     username: '',
     password: ''
@@ -22,7 +19,7 @@ function Login(props) {
     update(
       _,
       {
-        data: { login: userData }
+        data: { login: userData } 
       }
     ) {
       context.login(userData);
@@ -34,6 +31,7 @@ function Login(props) {
     },
     variables: values
   });
+
   function loginUserCallback() {
     loginUser();
   }
@@ -47,18 +45,32 @@ function Login(props) {
           placeholder="Username.."
           name="username"
           type="text"
+          value={values.username}
+          error={errors.username ? true : false}
+          onChange={onChange}
         />
         <Form.Input
           label="Password"
           placeholder="Password.."
           name="password"
           type="password"
+          value={values.password}
+          error={errors.password ? true : false}
+          onChange={onChange}
         />
         <Button type="submit" primary>
           Login
         </Button>
       </Form>
-      
+      {Object.keys(errors).length > 0 && (
+        <div className="ui error message">
+          <ul className="list">
+            {Object.values(errors).map((value) => (
+              <li key={value}>{value}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
@@ -68,14 +80,11 @@ const LOGIN_USER = gql`
     login(username: $username, password: $password) {
       id
       email
-      img
-      causes
       username
       createdAt
       token
     }
   }
 `;
-
 
 export default Login;

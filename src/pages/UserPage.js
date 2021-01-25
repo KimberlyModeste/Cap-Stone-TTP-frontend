@@ -3,6 +3,7 @@ import {Button, Grid, Header, Divider, Image,Icon, Card, Modal, Form, Container}
 import '../App.css'
 import { connect } from 'react-redux'
 import PostCard from '../components/PostCard';
+import PostForm from '../components/PostForm';
 import { AuthContext } from '../context/auth';
 
 function UsersPage({posts=[]}) {
@@ -15,7 +16,7 @@ return (
     <div>
     <Header as='h2' icon textAlign='center'>
         <Image src='https://react.semantic-ui.com/images/avatar/small/molly.png' circular />
-        <Header.Content>{user.username}</Header.Content>
+        <Header.Content>{user ? user.username : null}</Header.Content>
     </Header>
     <Grid>
     <Grid.Column textAlign= 'center'>
@@ -34,13 +35,13 @@ return (
             <Form.Input
                 label ="Username"
                 placeholder = ".."
-                value = {user.username} //make this username
+                value = {user ? user.username : null} //make this username
                 type = "text"  
              /> 
              <Form.Input
                 label ="Email"
                 placeholder = "...."
-                value = {user.email} //make this email
+                value = {user ? user.email : null} //make this email
                 type = "text"  
              /> 
             <Form.Input
@@ -73,7 +74,8 @@ return (
     </Modal>
     </Grid.Column> 
     </Grid>
-    <Divider section />
+    <PostForm />
+    {/* <Divider section />
     <Grid>
     <Grid.Column textAlign= 'center'>
       <Form>
@@ -112,7 +114,9 @@ return (
       </Grid.Column>
       </Grid>
 
-    <Divider section />
+    <Divider section /> */}
+
+
     <Grid.Column centered columns={4}>   
           <>
             { 

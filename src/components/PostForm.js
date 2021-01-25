@@ -8,7 +8,10 @@ import { FETCH_POSTS_QUERY } from '../util/graphql';
 
 function PostForm() {
   const { values, onChange, onSubmit } = useForm(createPostCallback, {
-    body: ''
+    body: '',
+    title: '',
+    img: ''
+
   });
 
   const [createPost, {error}] = useMutation(CREATE_POST_MUTATION, {
@@ -31,15 +34,29 @@ function PostForm() {
   }
 
   return (
-    <>
+    <div style={{width:"60rem", marginLeft:"50%" }}>
       <Form onSubmit={onSubmit}>
         <h2>Create a post:</h2>
         <Form.Field>
+        <Form.Input
+            placeholder="title..."
+            name="title"
+            onChange={onChange}
+            value={values.title}
+            error={error ? true : false}
+          />
           <Form.Input
-            placeholder="Hi World!"
+            placeholder="body..."
             name="body"
             onChange={onChange}
             value={values.body}
+            error={error ? true : false}
+          />
+          <Form.Input
+            placeholder="Image Link..."
+            name="img"
+            onChange={onChange}
+            value={values.img}
             error={error ? true : false}
           />
           <Button type="submit" color="teal">
@@ -50,18 +67,20 @@ function PostForm() {
       {error && (
         <div className="ui error message" style={{ marginBottom: 20 }}>
           <ul className="list">
-            <li>{error.graphQLErrors[0].message}</li>
+            <li>{console.log(JSON.stringify(error, null, 2))}</li>
           </ul>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
 const CREATE_POST_MUTATION = gql`
-  mutation createPost($body: String!) {
-    createPost(body: $body) {
+  mutation createPost($title: String!, $img: String! ,$body: String!) {
+    createPost(body: $body, title: $title, img: $img ) {
       id
+      title
+      img
       body
       createdAt
       username

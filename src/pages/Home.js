@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import axios from "axios";
 
 import { useQuery } from '@apollo/client';
 import { Grid,  Divider} from 'semantic-ui-react'
@@ -8,7 +9,9 @@ import { FETCH_POSTS_QUERY } from '../util/graphql';
 import {connect} from 'react-redux'
 import { SAVE_ALL_POSTS } from '../redux/actions';
 
+
 let Globalposts =[]
+let weather ={}
 
 
 const  Home = ({posts = [], save}) => {
@@ -20,9 +23,21 @@ const  Home = ({posts = [], save}) => {
 
 
   useEffect(() => {
+
     Globalposts = postsFromDB
     save({type: SAVE_ALL_POSTS })
-    })
+
+
+  //   axios
+  //   .get(
+  //     "http://api.airvisual.com/v2/nearest_city?key=a151e02a-8442-4f12-8b56-5a7bf4b9d8e1"
+  //   )
+  //   .then((res) => weather = res.data)
+  //   .catch((err) => this.setState({ error: true }));
+    
+  
+  // console.log("weather data",weather)
+  })
 
 
   return (

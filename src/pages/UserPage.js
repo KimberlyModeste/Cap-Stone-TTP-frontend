@@ -19,6 +19,7 @@ return (
         <Header.Content>{user ? user.username : null}</Header.Content>
     </Header>
     <Grid>
+      
     <Grid.Column textAlign= 'center'>
     <Modal
       onClose={() => setOpen(false)}
@@ -74,8 +75,10 @@ return (
     </Modal>
     </Grid.Column> 
     </Grid>
+    <Divider section />
     <PostForm />
-    {/* <Divider section />
+    <Divider section />
+    {/* 
     <Grid>
     <Grid.Column textAlign= 'center'>
       <Form>

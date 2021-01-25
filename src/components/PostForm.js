@@ -34,7 +34,8 @@ function PostForm() {
   }
 
   return (
-    <div style={{width:"60rem", marginLeft:"50%" }}>
+    
+    <div style={{width:"60rem", marginLeft:"25%", marginRight: "25%"}}>
       <Form onSubmit={onSubmit}>
         <h2>Create a post:</h2>
         <Form.Field>
@@ -46,17 +47,17 @@ function PostForm() {
             error={error ? true : false}
           />
           <Form.Input
-            placeholder="body..."
-            name="body"
-            onChange={onChange}
-            value={values.body}
-            error={error ? true : false}
-          />
-          <Form.Input
             placeholder="Image Link..."
             name="img"
             onChange={onChange}
             value={values.img}
+            error={error ? true : false}
+          />
+            <Form.TextArea
+            placeholder="body..."
+            name="body"
+            onChange={onChange}
+            value={values.body}
             error={error ? true : false}
           />
           <Button type="submit" color="teal">

@@ -14,3 +14,14 @@
 .ui.teal.buttons .button:focus {
   background-color: #00b5ad;
 }
+
+#templates {
+  height: 100%;
+  width: 600px;
+}
+#update {
+  margin: 10px;
+}
+.ui.Input {
+  width: 5%;
+}

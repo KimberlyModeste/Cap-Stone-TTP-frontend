@@ -7,6 +7,7 @@ export const FETCH_POSTS_QUERY = gql`
       id
       title
       body
+      img
       createdAt
       username
       likeCount

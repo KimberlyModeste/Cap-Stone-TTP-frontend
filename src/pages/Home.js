@@ -1,52 +1,66 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+
 import { useQuery } from '@apollo/client';
-import { Grid, Transition } from 'semantic-ui-react';
+import { Grid,  Divider} from 'semantic-ui-react'
 import { AuthContext } from '../context/auth';
 import PostCard from '../components/PostCard';
-import PostForm from '../components/PostForm';
 import { FETCH_POSTS_QUERY } from '../util/graphql';
+import {connect} from 'react-redux'
+import { SAVE_ALL_POSTS } from '../redux/actions';
 
-function Home() {
+let Globalposts =[]
+
+
+const  Home = ({posts = [], save}) => {
   const { user } = useContext(AuthContext);
-
   const {
     loading,
-    data: { getPosts: posts } = {}
-  } = useQuery(FETCH_POSTS_QUERY);
+    data: { getPosts: postsFromDB } = {}
+    } = useQuery(FETCH_POSTS_QUERY);
+
+
+  useEffect(() => {
+    Globalposts = postsFromDB
+    save({type: SAVE_ALL_POSTS })
+    })
+
 
   return (
     <>
-    
-    <Grid columns={3}>
+    <div>
       <Grid.Row className="page-title">
         <h1>Trending.....</h1>
       </Grid.Row>
-      <Grid.Row>
-        {user && (
-          <Grid.Column>
-
-            <PostForm />
-          </Grid.Column>
-        )}
+      <Divider section />
+      <Grid.Column centered columns={4}>
         {loading ? (
           <h1>Loading posts..</h1>
         ) : ( 
           <>
-            {posts &&
+            { console.log(posts),
               posts.map((post) => (
-                console.log(post),
-                <Grid.Column key={post.id} style={{ marginBottom: 20 }}>
-                 <h1>{post.title}</h1>
+                
+                <div key={post.id}  >
+                  <Grid>
                   <PostCard post={post} />
-                </Grid.Column>
+                  </Grid>
+                </div>
               ))}
           </> 
           
         )}
-      </Grid.Row>
-    </Grid>
+      </Grid.Column>
+    </div>
     </>
   );
 }
 
-export default Home;
+const mapStateToProps = (state, ownProps) => (console.log("state is: ",state),{
+  posts: state.posts
+});
+const mapDispatchToProps = (dispatch) => { 
+  return {
+     save: () => dispatch({ type:SAVE_ALL_POSTS, payload:Globalposts}),
+     }
+ }
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

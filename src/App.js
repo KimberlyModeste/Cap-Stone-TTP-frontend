@@ -1,30 +1,43 @@
-import React from 'react';
+
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-//import { Container } from 'semantic-ui-react';
+import {createStore} from'redux'
+import { Provider } from "react-redux";
 
-//import 'semantic-ui-css/semantic.min.css';
+import { AuthProvider } from "./context/auth";
+import AuthRoute from './util/AuthRoute';
+
 import './App.css';
-
-//import { AuthProvider } from './context/auth';
-//import AuthRoute from './util/AuthRoute';
-
- import NavBar from './components/NavBar';
+import reducer from './redux/reducer'
+import MenuBar from './components/MenuBar';
  import Home from './pages/Home';
-// import Login from './pages/Login';
-// import Register from './pages/Register';
-// import SinglePost from './pages/SinglePost';
+ import Register from './pages/Register';
+import UsersPage from './pages/UserPage';
+import Login from './pages/Login';
 
-export default function App() {
+ function App() {
+
+  const initialState = {
+    posts: [],
+    user: null
+  }
+
+  const store = createStore(reducer, initialState);
+
   return (
-    // <AuthProvider>
+    
+    <AuthProvider>
+    <Provider store={store}>
       <Router>
-          <NavBar />
+          <MenuBar />
           <Route exact path="/" component={Home} />
-          {/* <AuthRoute exact path="/login" component={Login} />
+          <Route exact path="/users" component={UsersPage} />
+          <AuthRoute exact path="/login" component={Login} />
           <AuthRoute exact path="/register" component={Register} />
-          <Route exact path="/posts/:postId" component={SinglePost} /> */}
-        
       </Router>
-    //</AuthProvider>
+    </Provider>
+    </AuthProvider>
   );
 }
+
+export default App

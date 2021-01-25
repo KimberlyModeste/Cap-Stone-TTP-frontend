@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import axios from "axios";
+import WeatherBar from '../components/WeatherBar'
+
 
 import { useQuery } from '@apollo/client';
 import { Grid,  Divider} from 'semantic-ui-react'
@@ -28,21 +30,22 @@ const  Home = ({posts = [], save}) => {
     save({type: SAVE_ALL_POSTS })
 
 
-  //   axios
-  //   .get(
-  //     "http://api.airvisual.com/v2/nearest_city?key=a151e02a-8442-4f12-8b56-5a7bf4b9d8e1"
-  //   )
-  //   .then((res) => weather = res.data)
-  //   .catch((err) => this.setState({ error: true }));
+    axios
+    .get(
+      "http://api.airvisual.com/v2/nearest_city?key=a151e02a-8442-4f12-8b56-5a7bf4b9d8e1"
+    )
+    .then((res) => weather = res.data)
+    .catch((err) => this.setState({ error: true }));
     
   
-  // console.log("weather data",weather)
+  console.log("weather data",weather)
   })
 
 
   return (
     <>
     <div>
+      <WeatherBar weatherStuff={weather} /> 
       <Grid.Row className="page-title">
         <h1>Trending.....</h1>
       </Grid.Row>

@@ -1,21 +1,48 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {Button, Grid, Header, Divider, Image,Icon, Card, Modal, Form, Container} from 'semantic-ui-react'
 import '../App.css'
 import { connect } from 'react-redux'
+
+
+
+import { FETCH_POSTS_QUERY } from '../util/graphql';
+import { SAVE_ALL_POSTS } from '../redux/actions';
+
+import { useQuery } from '@apollo/client';
 import PostCard from '../components/PostCard';
 import PostForm from '../components/PostForm';
 import { AuthContext } from '../context/auth';
 
-function UsersPage({posts=[]}) {
+
+let Globalposts = []
+function UsersPage({posts = [], save}) {
+
+
+
   const [open, setOpen] = useState(false)
   const { user, logout } = useContext(AuthContext);
 
 
+  const {
+    loading,
+    data: { getPosts: postsFromDB } = {}
+    } = useQuery(FETCH_POSTS_QUERY);
+
+
+  useEffect(() => {
+
+    Globalposts = postsFromDB
+   
+    save({type: SAVE_ALL_POSTS })
+
+  })
+
 
 return (
+
     <div>
     <Header as='h2' icon textAlign='center'>
-        <Image src='https://react.semantic-ui.com/images/avatar/small/molly.png' circular />
+        <Image src='https://www.kindpng.com/picc/m/285-2856724_user-avatar-enter-free-photo-user-avatar-green.png' circular />
         <Header.Content>{user ? user.username : null}</Header.Content>
     </Header>
     <Grid>
@@ -117,7 +144,7 @@ return (
     <Divider section /> */}
 
 
-    <Grid.Column centered columns={4}>   
+    <Grid.Column centered columns={1}>   
           <>
             { 
               posts.map((post) => (
@@ -127,23 +154,25 @@ return (
                   <PostCard post={post} />
                   </Grid>
                 </div> : null
-              ))}
+              )) 
+           }
           </> 
       </Grid.Column>
      
 
 </div>
-    
 )
-}
+}   
+
+
 const mapStateToProps = (state, ownProps) => (console.log("state is: ",state),{
   posts: state.posts
 });
 const mapDispatchToProps = (dispatch) => { 
   return {
-     //save: () => dispatch({ type:SAVE_ALL_POSTS, payload:Globalposts}),
+     save: () => dispatch({ type:SAVE_ALL_POSTS, payload:Globalposts}),
      }
  }
 
 
-export default connect (mapStateToProps)(UsersPage)
+export default connect (mapStateToProps,mapDispatchToProps)(UsersPage)

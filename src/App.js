@@ -15,6 +15,7 @@ import MenuBar from './components/MenuBar';
 import UsersPage from './pages/UserPage';
 import Login from './pages/Login';
 
+
  function App() {
 
   const initialState = {
@@ -29,6 +30,7 @@ import Login from './pages/Login';
     <AuthProvider>
     <Provider store={store}>
       <Router>
+       
           <MenuBar />
           <Route exact path="/" component={Home} />
           <Route exact path="/users" component={UsersPage} />

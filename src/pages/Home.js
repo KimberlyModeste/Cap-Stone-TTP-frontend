@@ -8,6 +8,8 @@ import PostCard from '../components/PostCard';
 import { FETCH_POSTS_QUERY } from '../util/graphql';
 import {connect} from 'react-redux'
 import { SAVE_ALL_POSTS } from '../redux/actions';
+import vid from "../Pexels Videos 1204911.mp4"
+
 
 
 let Globalposts =[]
@@ -15,7 +17,11 @@ let weather ={}
 
 
 const  Home = ({posts = [], save}) => {
+
+
   const { user } = useContext(AuthContext);
+
+  
   const {
     loading,
     data: { getPosts: postsFromDB } = {}
@@ -43,25 +49,25 @@ const  Home = ({posts = [], save}) => {
   return (
     <>
     <div>
+      <video src ={vid} autoPlay loop muted/>
       <Grid.Row className="page-title">
-        <h1>Trending.....</h1>
+ <h1 style={{margin:"0 0 0 0 "}}>Trending.....</h1>
       </Grid.Row>
-      <Divider section />
       <Grid.Column centered columns={4}>
         {loading ? (
           <h1>Loading posts..</h1>
         ) : ( 
-          <>
-            { console.log(posts),
+          <div>
+            {
               posts.map((post) => (
-                
+                console.log(post),
                 <div key={post.id}  >
                   <Grid>
                   <PostCard post={post} />
                   </Grid>
-                </div>
-              ))}
-          </> 
+                </div> 
+              ) )}
+          </div>
           
         )}
       </Grid.Column>
@@ -70,7 +76,8 @@ const  Home = ({posts = [], save}) => {
   );
 }
 
-const mapStateToProps = (state, ownProps) => (console.log("state is: ",state),{
+const mapStateToProps = (state, ownProps) => (//console.log("state is: ",state),
+{
   posts: state.posts
 });
 const mapDispatchToProps = (dispatch) => { 

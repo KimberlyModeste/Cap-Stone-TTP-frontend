@@ -19,7 +19,7 @@ import { AuthContext } from '../context/auth';
 
    
    const menuBar = user ? (
-    <Menu pointing secondary size="massive" color="teal">
+    <Menu pointing secondary size="massive" color="green" style={{marginBottom:"0"}}>
       <Menu.Item name="Home"
         active={activeItem === 'Home'}
         onClick={handleItemClick} 
@@ -35,7 +35,7 @@ import { AuthContext } from '../context/auth';
       </Menu.Menu>
     </Menu>
   ) : (
-     <Menu  pointing secondary size="massive" color="teal">
+     <Menu  pointing secondary size="massive" color="green">
     {/* This is for the Home page where all the Blog stuff is */}
     <Menu.Item
     name= "home"

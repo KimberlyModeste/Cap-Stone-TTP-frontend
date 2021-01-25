@@ -11,7 +11,6 @@ function PostForm() {
     body: '',
     title: '',
     img: ''
-
   });
 
   const [createPost, {error}] = useMutation(CREATE_POST_MUTATION, {
@@ -34,8 +33,8 @@ function PostForm() {
   }
 
   return (
-    <div style={{width:"60rem", marginLeft:"50%" }}>
-      <Form onSubmit={onSubmit}>
+    <div style={{width:"30rem", margin:"3rem auto 3rem auto", border:"0.5rem solid black", borderRadius:"0.5rem"}}>
+      <Form className="ui form" onSubmit={onSubmit}>
         <h2>Create a post:</h2>
         <Form.Field>
         <Form.Input
@@ -59,7 +58,7 @@ function PostForm() {
             value={values.img}
             error={error ? true : false}
           />
-          <Button type="submit" color="teal">
+          <Button type="submit" color="green">
             Submit
           </Button>
         </Form.Field>
@@ -76,13 +75,14 @@ function PostForm() {
 }
 
 const CREATE_POST_MUTATION = gql`
-  mutation createPost($title: String!, $img: String! ,$body: String!) {
-    createPost(body: $body, title: $title, img: $img ) {
+  mutation createPost($title: String!, $img: String ,$body: String!) {
+    createPost( title: $title, img: $img ,body: $body) {
       id
       title
       img
       body
       createdAt
+      causes
       username
       likes {
         id

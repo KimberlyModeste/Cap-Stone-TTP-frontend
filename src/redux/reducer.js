@@ -7,13 +7,13 @@ export default function reducer(state, action){
     switch (action.type) {
 
         case GET_ALL_POSTS: {
-            console.log("I AM RETURNING ALL POSTS!!!!!")
+            //console.log("I AM RETURNING ALL POSTS!!!!!")
             return state
         }
 
         case SAVE_ALL_POSTS: {
             
-            console.log("I AM SAVING ALL POSTS!!!!!")
+          //  console.log("I AM SAVING ALL POSTS!!!!!")
             return {
                 posts: action.payload
             }

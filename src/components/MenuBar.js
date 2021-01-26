@@ -25,13 +25,13 @@ import { AuthContext } from '../context/auth';
         onClick={handleItemClick} 
         as={Link} to="/" />
 
+      
       <Menu.Item name={user.username}
         active={activeItem === user.username}
         onClick={handleItemClick} 
         as={Link} to="/users" />
-
-      <Menu.Menu position="right">
-        <Menu.Item name="logout" onClick={logout} />
+       <Menu.Menu position="right">
+        <Menu.Item name="logout" as={Link} to="/" onClick={logout} />
       </Menu.Menu>
     </Menu>
   ) : (

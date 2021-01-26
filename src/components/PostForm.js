@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form } from 'semantic-ui-react';
+import { Button, Form, Icon } from 'semantic-ui-react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
@@ -33,7 +33,7 @@ function PostForm() {
   }
 
   return (
-    <div style={{width:"30rem", margin:"3rem auto 3rem auto", border:"0.5rem solid black", borderRadius:"0.5rem"}}>
+    <div style={{width:"30rem", margin:"3rem auto 3rem auto",background:"", borderRadius:"0.5rem"}}>
       <Form className="ui form" onSubmit={onSubmit}>
         <h2>Create a post:</h2>
         <Form.Field>
@@ -58,8 +58,11 @@ function PostForm() {
             value={values.img}
             error={error ? true : false}
           />
-          <Button type="submit" color="green">
-            Submit
+          <Button animated type="submit" color="green">
+          <Button.Content visible>Post</Button.Content>
+      <Button.Content hidden>
+      <Icon name='arrow right' />
+      </Button.Content>
           </Button>
         </Form.Field>
       </Form>

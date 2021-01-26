@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import axios from "axios";
-
+import WeatherBar from '../components/WeatherBar'
 import { useQuery } from '@apollo/client';
 import { Grid,  Divider} from 'semantic-ui-react'
 import { AuthContext } from '../context/auth';
@@ -29,20 +29,19 @@ const  Home = ({posts = [], save}) => {
 
 
   useEffect(() => {
-
-    Globalposts = postsFromDB
-    save({type: SAVE_ALL_POSTS })
-
-
-  //   axios
-  //   .get(
-  //     "http://api.airvisual.com/v2/nearest_city?key=a151e02a-8442-4f12-8b56-5a7bf4b9d8e1"
-  //   )
-  //   .then((res) => weather = res.data)
-  //   .catch((err) => this.setState({ error: true }));
     
+  Globalposts = postsFromDB
+  save({type: SAVE_ALL_POSTS })
+
   
-  // console.log("weather data",weather)
+  axios
+      .get(
+        "https://api.airvisual.com/v2/nearest_city?key=a151e02a-8442-4f12-8b56-5a7bf4b9d8e1"
+      )
+      .then((res) => weather = res.data)
+      .catch((err) => console.log(err));
+    
+  console.log("weather data",weather)
   })
 
 
@@ -50,8 +49,10 @@ const  Home = ({posts = [], save}) => {
     <>
     <div>
       <video src ={vid} autoPlay loop muted/>
+      <WeatherBar weatherStuff={weather} /> 
+
       <Grid.Row className="page-title">
- <h1 style={{margin:"0 0 0 0 "}}>Trending.....</h1>
+ <h1 style={{margin:"0 0 0 0 ", fontFamily:"Impact, fantasy"}}>Trending.....</h1>
       </Grid.Row>
       <Grid.Column centered columns={4}>
         {loading ? (

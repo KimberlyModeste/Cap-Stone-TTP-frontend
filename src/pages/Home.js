@@ -55,7 +55,7 @@ const  Home = ({ save}) => {
           <div>
             {
               postsFromDB.map((post) => (
-               
+
                 <div key={post.id}  >
                   <Grid>
                   <PostCard post={post} />
@@ -77,7 +77,8 @@ const mapStateToProps = (state, ownProps) => (//console.log("state is: ",state),
 });
 const mapDispatchToProps = (dispatch) => {
   return {
-     save: (type,data) => dispatch({ type:type, payload:data}),
+    
+    save: (type,data) => dispatch({ type:type, payload:data}),
     }
  }
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

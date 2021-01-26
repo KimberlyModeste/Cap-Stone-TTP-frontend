@@ -3,8 +3,6 @@ import {Button, Grid, Header, Divider, Image,Icon, Card, Modal, Form, Container}
 import '../App.css'
 import { connect } from 'react-redux'
 
-
-
 import { FETCH_POSTS_QUERY } from '../util/graphql';
 import { SAVE_ALL_POSTS } from '../redux/actions';
 
@@ -16,13 +14,14 @@ import { AuthContext } from '../context/auth';
 
 let Globalposts = []
 
-function Profile({posts = []}, props) {
+function Profile(props,{posts = []}) {
     
   const [open, setOpen] = useState(false)
   const { user, logout } = useContext(AuthContext); 
    
-  console.log(props)
-
+  
+console.log(props)
+//
   const userName = props.match.params.username;
 
   const {
@@ -36,7 +35,7 @@ function Profile({posts = []}, props) {
     Globalposts = postsFromDB
   })
 
-
+  
 return (
 
     <div style={{backgroundImage: "linear-gradient(#F7F8F8 0%, #ACBB78 100%)"}}>
@@ -48,7 +47,10 @@ return (
     <Grid.Column centered columns={1}>   
           <>
             { 
+           console.log("from line 50:",posts),
+            
               posts.map((post) => (
+                console.log(post),
                 post.username === userName?
                 <div key={post.id}  >
                   <Grid>
@@ -71,7 +73,7 @@ const mapStateToProps = (state, ownProps) => (console.log("state is: ",state),{
 });
 const mapDispatchToProps = (dispatch) => { 
   return {
-     save: () => dispatch({ type:SAVE_ALL_POSTS, payload:Globalposts}),
+    save: (type,data) => dispatch({ type:type, payload:data}),
      }
  }
 

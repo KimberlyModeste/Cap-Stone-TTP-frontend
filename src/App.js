@@ -37,7 +37,7 @@ import Profile from './pages/Profile';
           <Route exact path="/users" component={UsersPage} />
           <AuthRoute exact path="/login" component={Login} />
           <AuthRoute exact path="/register" component={Register} />
-          <Route exact path="/profile/:username" 
+          <Route exact path="/profile/:username" component={Profile}
           // location={this.props.location} 
           // key={this.props.location.key} 
           // render={({ 

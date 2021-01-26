@@ -1,7 +1,7 @@
-import React, { useContext, useRef, useState, useMutation } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import {Button, Grid, Header, Form, Divider, Image,Icon, Card, Label} from 'semantic-ui-react'
+import { Form, Image, Card} from 'semantic-ui-react'
 import { AuthContext } from '../context/auth';
 
 import LikeButton from './LikeButton';
@@ -9,33 +9,32 @@ import DeleteButton from './DeleteButton';
 import PopUp from '../util/PopUp';
 import gql from 'graphql-tag';
 
-
+import { useMutation } from '@apollo/react-hooks';
 
 
 function PostCard({
   post: {title, comments , body,img, createdAt, id, username, likeCount, commentCount, likes }
 }) {
 
+  
 
   const { user } = useContext(AuthContext);
 
   const commentInputRef = useRef(null);
   const [comment, setComment] = useState('');
-  
-  // const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
-  //   update() {
-  //     setComment('');
-  //     commentInputRef.current.blur();
-  //   },
-  //   variables: {
-  //     id,
-  //     body: comment
-  //   }
-  // })
+  const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
+    update() {
+      setComment('');
+      commentInputRef.current.blur();
+    },
+    variables: {
+      id,
+      body: comment
+    }
+  })
 
   return (
     <>
-
         <Card id = "templates" className = 'ui centered card'  style={{marginTop:"2rem",marginBottom:"2rem"}}>
           <Card.Content>
              <Image
@@ -45,12 +44,7 @@ function PostCard({
             circular
             />
             <Card.Header>{title}</Card.Header>
-            <Card.Header as={Link} to={{
-  pathname: '/Profile',
-  search: 'username',
-  hash: '#the-hash',
-  state: { fromDashboard: true }
-}} style={{color:"green"}}>{username}</Card.Header>
+            <Card.Header as={Link} to={`/profile/${username}`} style={{color:"green"}}>{username}</Card.Header>
             <Card.Meta >
               {moment(createdAt).fromNow(true)}
             </Card.Meta>
@@ -59,22 +53,13 @@ function PostCard({
             </Card.Description>
             <Card.Content extra>
             <LikeButton user={user} post={{ id, likes, likeCount }} />
-            <PopUp content="Comment on post">
-              <Button labelPosition="right" as={Link} to={`/posts/${id}`}>
-                <Button color="blue" basic>
-                  <Icon name="comments" />
-                </Button>
-                <Label basic color="blue" pointing="left">
-                  {commentCount}
-                </Label>
-              </Button>
-            </PopUp>
+            
             {user && user.username === username && <DeleteButton postId={id} />}
 
           </Card.Content>
 
           
-          {/* commenting on a post
+          
            {user && (
               <Card fluid>
                 <Card.Content>
@@ -101,7 +86,7 @@ function PostCard({
                   </Form>
                 </Card.Content>
               </Card>
-            )} */}
+            )}
 
           {comments.map((comment) => (
               <Card fluid key={comment.id}>

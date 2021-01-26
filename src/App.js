@@ -37,7 +37,16 @@ import Profile from './pages/Profile';
           <Route exact path="/users" component={UsersPage} />
           <AuthRoute exact path="/login" component={Login} />
           <AuthRoute exact path="/register" component={Register} />
-          <Route exact path="/profile/:username" component={Profile} />
+          <Route exact path="/profile/:username" 
+          // location={this.props.location} 
+          // key={this.props.location.key} 
+          // render={({ 
+          //     location, 
+          //     match 
+          // }) => (
+          //     <Profile key={this.props.location.key} match={match} />
+          // )} 
+ />
       </Router>
     </Provider>
     </AuthProvider>

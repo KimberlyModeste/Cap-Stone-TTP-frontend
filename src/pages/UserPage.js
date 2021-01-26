@@ -14,7 +14,7 @@ import PostForm from '../components/PostForm';
 import { AuthContext } from '../context/auth';
 
 
-let Globalposts = []
+//let Globalposts = []
 function UsersPage({posts = [], save}) {
 
 
@@ -29,9 +29,9 @@ function UsersPage({posts = [], save}) {
     } = useQuery(FETCH_POSTS_QUERY);
 
 
-  useEffect(() => {
-    Globalposts = postsFromDB
-    save({type: SAVE_ALL_POSTS })
+    useEffect(() => {
+      save(SAVE_ALL_POSTS, postsFromDB)
+    
 
   })
 
@@ -113,8 +113,8 @@ const mapStateToProps = (state, ownProps) => (console.log("state is: ",state),{
 });
 const mapDispatchToProps = (dispatch) => { 
   return {
-     save: () => dispatch({ type:SAVE_ALL_POSTS, payload:Globalposts}),
-     }
+    save: (type,data) => dispatch({ type:type, payload:data}),
+  }
  }
 
 

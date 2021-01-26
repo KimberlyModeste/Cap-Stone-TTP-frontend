@@ -8,8 +8,6 @@ export default function WeatherBar({weatherStuff}) {
     let aqi;
     let words, usaqiwords, area, caqiwords, time, temp, link ="https://www.airvisual.com/images/";
     let t = document.getElementById("banner");
-    console.log("from weatherBanner: ", weatherStuff)
-    console.log(weatherStuff.data)
 
 
     if(t !== null && weatherStuff.data!== undefined)

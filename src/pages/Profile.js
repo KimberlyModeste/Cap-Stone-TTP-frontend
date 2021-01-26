@@ -16,14 +16,14 @@ import { AuthContext } from '../context/auth';
 
 let Globalposts = []
 
-function Profile({posts = [], save}, props) {
+function Profile({posts = []}, props) {
     
   const [open, setOpen] = useState(false)
   const { user, logout } = useContext(AuthContext); 
-   console.log(props)
+   
+  console.log(props)
+
   const userName = props.match.params.username;
-
-
 
   const {
     loading,
@@ -34,9 +34,6 @@ function Profile({posts = [], save}, props) {
   useEffect(() => {
 
     Globalposts = postsFromDB
-   
-    save({type: SAVE_ALL_POSTS })
-
   })
 
 

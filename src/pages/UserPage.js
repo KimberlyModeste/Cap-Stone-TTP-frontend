@@ -2,7 +2,7 @@ import React, {useState, useContext, useEffect} from 'react'
 import {Button, Grid, Header, Divider, Image,Icon, Card, Modal, Form, Container} from 'semantic-ui-react'
 import '../App.css'
 import { connect } from 'react-redux'
-
+import {Link} from 'react-router-dom';
 
 
 import { FETCH_POSTS_QUERY } from '../util/graphql';
@@ -45,6 +45,7 @@ return (
     </Header>
     <Grid>
     <Grid.Column textAlign= 'center'>
+    <Button as={Link} to={`/Donations/${user.username}`}>Donation</Button>
     <Modal
     style={{width:"30rem"}}
       onClose={() => setOpen(false)}
@@ -108,7 +109,7 @@ return (
 }   
 
 
-const mapStateToProps = (state, ownProps) => (console.log("state is: ",state),{
+const mapStateToProps = (state, ownProps) => ({
   posts: state.posts
 });
 const mapDispatchToProps = (dispatch) => { 

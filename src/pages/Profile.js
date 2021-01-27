@@ -3,37 +3,24 @@ import {Button, Grid, Header, Divider, Image,Icon, Card, Modal, Form, Container}
 import '../App.css'
 import { connect } from 'react-redux'
 
-
+import { withRouter } from "react-router";
 
 import { FETCH_POSTS_QUERY } from '../util/graphql';
-import { SAVE_ALL_POSTS } from '../redux/actions';
-
+import { GET_ALL_POSTS } from '../redux/actions';
 import { useQuery } from '@apollo/client';
+
 import PostCard from '../components/PostCard';
-import PostForm from '../components/PostForm';
-import { AuthContext } from '../context/auth';
 
 
 let Globalposts = []
 
-function Profile({posts = []}, props) {
+const Profile = (props) => {
     
-  const [open, setOpen] = useState(false)
-  const { user, logout } = useContext(AuthContext); 
-   
-  console.log(props)
-
+  //const [posts, setPosts] = useState()
   const userName = props.match.params.username;
 
-  const {
-    loading,
-    data: { getPosts: postsFromDB } = {}
-    } = useQuery(FETCH_POSTS_QUERY);
-
-
   useEffect(() => {
-
-    Globalposts = postsFromDB
+    console.log("State posts from profile: ",props.posts)
   })
 
 
@@ -47,16 +34,16 @@ return (
 
     <Grid.Column centered columns={1}>   
           <>
-            { 
-              posts.map((post) => (
-                post.username === userName?
+            {
+              props.posts.map((post) => (
+                 post.username === userName?
                 <div key={post.id}  >
                   <Grid>
                   <PostCard post={post} />
                   </Grid>
                 </div> : null
               )) 
-           }
+           } 
           </> 
       </Grid.Column>
      
@@ -65,15 +52,13 @@ return (
 )
 }   
 
+const mapStateToProps = function(state){
+ return{ posts: state.posts }
+};
 
-const mapStateToProps = (state, ownProps) => (console.log("state is: ",state),{
-  posts: state.posts
-});
 const mapDispatchToProps = (dispatch) => { 
   return {
-     save: () => dispatch({ type:SAVE_ALL_POSTS, payload:Globalposts}),
+     getPosts: () => dispatch({ type:GET_ALL_POSTS}),
      }
  }
-
-
-export default connect (mapStateToProps,mapDispatchToProps)(Profile)
+export default connect(mapStateToProps,mapDispatchToProps)(Profile) 

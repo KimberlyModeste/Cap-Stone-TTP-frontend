@@ -1,7 +1,6 @@
 import React, {useState, useContext} from 'react'
 import { Menu } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
-//import {BrowserRouter as Router} from 'react-router-dom';
 
 
 import { AuthContext } from '../context/auth';
@@ -25,11 +24,11 @@ import { AuthContext } from '../context/auth';
         onClick={handleItemClick} 
         as={Link} to="/" />
 
-      
       <Menu.Item name={user.username}
         active={activeItem === user.username}
         onClick={handleItemClick} 
         as={Link} to="/users" />
+        <p style={{paddingLeft:"15rem",fontSize: "larger" ,color:"#2A560A", margin:"0.5em auto 0.5em auto"}} >ENVIROMANIA <i className="leaf icon"></i></p>
        <Menu.Menu position="right">
         <Menu.Item name="logout" as={Link} to="/" onClick={logout} />
       </Menu.Menu>
@@ -37,6 +36,7 @@ import { AuthContext } from '../context/auth';
   ) : (
      <Menu  pointing secondary size="massive" color="green">
     {/* This is for the Home page where all the Blog stuff is */}
+    
     <Menu.Item
     name= "home"
 
@@ -46,6 +46,8 @@ import { AuthContext } from '../context/auth';
     to="/"
     />
     {/* They are logged in */}
+    <p style={{paddingLeft:"15rem",fontSize: "larger" ,color:"#2A560A", margin:"0.5em auto 0.5em auto"}} >ENVIROMANIA <i className="leaf icon"></i></p>
+      
     <Menu.Menu position="right">
      <Menu.Item
       name="login"

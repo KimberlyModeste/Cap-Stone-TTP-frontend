@@ -8,6 +8,7 @@ import { FETCH_POSTS_QUERY } from '../util/graphql';
 import {connect} from 'react-redux'
 import { SAVE_ALL_POSTS } from '../redux/actions';
 import vid from "../Pexels Videos 1204911.mp4"
+import ControlledCarousel from "../components/MyCarousel"
 
 
 const  Home = ({ save}) => {
@@ -29,7 +30,7 @@ const  Home = ({ save}) => {
   
   axios
       .get(
-        //"https://api.airvisual.com/v2/nearest_city?key=bb37c382-bd04-439e-a6f7-6970a3739b22"
+        "https://api.airvisual.com/v2/nearest_city?key=bb37c382-bd04-439e-a6f7-6970a3739b22"
       )
       .then((res) => {
         setWeather(res.data)
@@ -43,10 +44,11 @@ const  Home = ({ save}) => {
     <>
     <div>
       <video src ={vid} autoPlay loop muted/>
+     
       <WeatherBar weatherStuff={weather} /> 
-
+ <ControlledCarousel />
       <Grid.Row className="page-title">
- <p style={{margin:"0 0 0 0 ", fontFamily:"Impact, fantasy"}}>Trending.....</p>
+ <p style={{margin:"0 0 0 0 ", fontFamily:"Impact, fantasy"}}>Trending</p>
       </Grid.Row>
       <Grid.Column centered columns={4}>
         {loading ? (
@@ -71,7 +73,8 @@ const  Home = ({ save}) => {
   );
 }
 
-const mapStateToProps = (state, ownProps) => (//console.log("state is: ",state),
+const mapStateToProps = (state, ownProps) => (
+  console.log("state from home is: ",state),
 {
   posts: state.posts
 });

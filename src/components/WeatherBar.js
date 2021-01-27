@@ -16,33 +16,30 @@ export default function WeatherBar({weatherStuff}) {
 
         if(aqi <= 50)
         {
-         t.style.background = "linear-gradient(to right, #DCE35B 0%, #45B649 100%)"; //green
-         //t.style.backgroundImage= "url(https://images.unsplash.com/photo-1524535412680-21809efc44e7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80)"
+         t.style.background = "linear-gradient(90deg, #56ab2f 0%, #FFFFFF 100%)"; //green
+         //t.style.background= "url(https://png.pngtree.com/thumb_back/fw800/back_pic/00/05/33/86562656f65b38e.png)"
          t.style.color = "black"
-         t.style.width="50%"
-         t.style.margin="2rem auto 2rem auto"
-         t.style.borderRadius="5%"
          words = "Good"
          
         }
 
         else if(aqi <= 100)
         {
-         t.style.background ="#f3ec19" //yellow
-         t.style.color = "black"
+        t.style.background = "linear-gradient(90deg, #fffc00 0%, #FFFFFF 100%)"; //green
+        t.style.color = "black"
          words = "Moderate"
         }
         
         else if(aqi <= 150)
         {
-         t.style.background ="#f57e20" //orange
+        t.style.background = "linear-gradient(90deg, #f12711 0%, #f5af19 100%)"; //green
          t.style.color = "white"
          words = "Unhealthy for sensitive groups"
         }
 
         else if(aqi <= 200)
         {
-         t.style.background ="#ed1d24" //red
+        t.style.background = "linear-gradient(90deg, #ff416c 0%, #ff4b2b 100%)"; //green
          t.style.color = "white"
          words = "Unhealthy"
         }
@@ -58,7 +55,6 @@ export default function WeatherBar({weatherStuff}) {
         {
          t.style.background ="#480d27" //dark purple
          t.style.color = "white"
-        
          words = "Hazardous"
         }
        
@@ -77,15 +73,15 @@ export default function WeatherBar({weatherStuff}) {
     }
     return (
         <div>
-         <Table id="banner">
+         <Table id="banner" style={{ margin:"0 auto 1rem auto",padding:"2rem",borderRadius:"5%", width:"50%", border:"0.2rem solid white"}}>
              <h1>{area}</h1>
-             <tr><td>{usaqiwords} <br/><br/>{caqiwords}</td><td>
+             <tr><td style={{fontSize:"large"}}>{usaqiwords} <br/><br/><p >{caqiwords}</p></td><td style={{fontSize:"large"}}>
                 {time}
                 <br/>
                 <br/>
                  <Image src = {link} size="tiny" verticalAlign='middle'/>{temp}
                  </td></tr>
-                 <tr><td>{words}</td></tr>
+                 <tr><td style={{fontSize:"large"}}>{words}</td></tr>
                  </Table>
         </div>
     )

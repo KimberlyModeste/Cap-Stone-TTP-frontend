@@ -10,11 +10,12 @@ import AuthRoute from './util/AuthRoute';
 import './App.css';
 import reducer from './redux/reducer'
 import MenuBar from './components/MenuBar';
- import Home from './pages/Home';
- import Register from './pages/Register';
+import Home from './pages/Home';
+import Register from './pages/Register';
 import UsersPage from './pages/UserPage';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import Donations from './pages/Donations';
 
 
  function App() {
@@ -37,16 +38,8 @@ import Profile from './pages/Profile';
           <Route exact path="/users" component={UsersPage} />
           <AuthRoute exact path="/login" component={Login} />
           <AuthRoute exact path="/register" component={Register} />
-          <Route exact path="/profile/:username" component={Profile}
-          // location={this.props.location} 
-          // key={this.props.location.key} 
-          // render={({ 
-          //     location, 
-          //     match 
-          // }) => (
-          //     <Profile key={this.props.location.key} match={match} />
-          // )} 
- />
+          <Route exact path="/profile/:username" component={Profile}/>
+          <Route exact path = "/Donations/:username" component = {Donations}/>
       </Router>
     </Provider>
     </AuthProvider>

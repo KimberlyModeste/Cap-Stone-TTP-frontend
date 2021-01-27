@@ -98,7 +98,14 @@ function Donations(props) {
               <Icon name='arrow right' />
               </Button.Content>
             </Button> 
+            <Confirm
+        open={confirmOpen}
+        onCancel={() => setConfirmOpen(false)}
+        content ={words}
+        onConfirm={createPostCallback}
+      />
           </>
+          
           )}
       <Button animated color="blue" onClick= {()=>{
              setCheckOut(true)
@@ -111,12 +118,7 @@ function Donations(props) {
           
         </Form.Field>
       </Form>
-      <Confirm
-        open={confirmOpen}
-        onCancel={() => setConfirmOpen(false)}
-        content ={words}
-        onConfirm={createPostCallback}
-      />
+     
       {confirmation ?(<strong style={{marginTop:"5px",fontSize:"xx-large"}}>Thank You For Kind Donation!!!</strong>):("")}
       {error && (
         <div className="ui error message" style={{ marginBottom: 20 }}>

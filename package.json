@@ -57,5 +57,5 @@
       "last 1 safari version"
     ]
   }, 
-  "proxy": "https://git.heroku.com/enviromania.git"
+  "proxy": "https://enviromania.herokuapp.com/"
 }

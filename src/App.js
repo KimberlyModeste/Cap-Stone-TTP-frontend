@@ -39,6 +39,7 @@ import Donations from './pages/Donations';
           <AuthRoute exact path="/login" component={Login} />
           <AuthRoute exact path="/register" component={Register} />
           <Route exact path="/profile/:username" component={Profile}/>
+
           <Route exact path = "/Donations/:username" component = {Donations}/>
       </Router>
     </Provider>

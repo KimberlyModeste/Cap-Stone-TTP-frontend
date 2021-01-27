@@ -46,7 +46,9 @@ return (
     <Grid>
       
     <Grid.Column textAlign= 'center'>
-      <Button as={Link} to={`/Donations/${user.username}`}>Donation</Button>
+
+    <Button as={Link} to={`/Donations/${user.username}`}>Donation</Button>
+
     <Modal
     style={{width:"30rem"}}
       onClose={() => setOpen(false)}
@@ -112,7 +114,7 @@ return (
 }   
 
 
-const mapStateToProps = (state, ownProps) => (console.log("state is: ",state),{
+const mapStateToProps = (state, ownProps) => ({
   posts: state.posts
 });
 const mapDispatchToProps = (dispatch) => { 

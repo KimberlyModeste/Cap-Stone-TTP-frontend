@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { Form, Image, Card} from 'semantic-ui-react'
+import { Form, Image, Card, Button, Icon} from 'semantic-ui-react'
 import { AuthContext } from '../context/auth';
 
 import LikeButton from './LikeButton';
@@ -13,7 +13,7 @@ import { useMutation } from '@apollo/react-hooks';
 
 
 function PostCard({
-  post: {title, comments , body,img, createdAt, id, username, likeCount, commentCount, likes }
+  post: {title, comments , body,img, createdAt, id, username, likeCount, likes }
 }) {
 
   
@@ -74,14 +74,17 @@ function PostCard({
                         onChange={(event) => setComment(event.target.value)}
                         ref={commentInputRef}
                       />
-                      <button
-                        type="submit"
-                        className="ui button teal"
-                        disabled={comment.trim() === ''}
-                        onClick={submitComment}
-                      >
-                        Submit
-                      </button>
+                     
+                      <Button animated type="submit" color="green"
+                       disabled={comment.trim() === ''}
+                       onClick={submitComment}
+                       type="submit"
+                       >
+                      <Button.Content visible>Submit</Button.Content>
+                      <Button.Content hidden>
+                      <Icon name='arrow right' />
+                      </Button.Content>
+                      </Button>
                     </div>
                   </Form>
                 </Card.Content>
@@ -107,8 +110,8 @@ function PostCard({
 }
 
 const SUBMIT_COMMENT_MUTATION = gql`
-  mutation($postId: String!, $body: String!) {
-    createComment(postId: $postId, body: $body) {
+  mutation($id: String!, $body: String!) {
+    createComment(postId: $id, body: $body) {
       id
       comments {
         id

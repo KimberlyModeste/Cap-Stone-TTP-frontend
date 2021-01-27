@@ -8,22 +8,22 @@ const  App  = () => {
 	let  elements  = [
 		{
 			render:()=>{
-				return <img style ={{margin:"0 auto 0 auto" , width:"50rem", height: "20rem" }}src={logo1} alt="message" fluid />
+				return <img style ={{margin:"0 auto 0 auto" , width:"50rem", height: "20rem" }}src={logo1} alt="message"  />
 			}
 		},
 		{
 			render:()=>{
-				return <img style ={{margin:"0 auto 0 auto" , width:"50rem", height: "20rem" }}src={logo2} alt="message" fluid />
+				return <img style ={{margin:"0 auto 0 auto" , width:"50rem", height: "20rem" }}src={logo2} alt="message"  />
 			}
         },
         {
 			render:()=>{
-				return <img style ={{margin:"0 auto 0 auto" , width:"50rem", height: "20rem" }}src={logo3} alt="message" fluid />
+				return <img style ={{margin:"0 auto 0 auto" , width:"50rem", height: "20rem" }}src={logo3} alt="message"  />
 			}
         },
         {
 			render:()=>{
-				return <img style ={{margin:"0 auto 0 auto" , width:"50rem", height: "20rem" }}src={logo4} alt="message" fluid />
+				return <img style ={{margin:"0 auto 0 auto" , width:"50rem", height: "20rem" }}src={logo4} alt="message" />
 			}
         }
 	]

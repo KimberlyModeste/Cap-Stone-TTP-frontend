@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react'
-import {Button, Grid, Header, Divider, Image,Icon, Card, Modal, Form, Container} from 'semantic-ui-react'
+import {Button, Grid, Header, Divider, Image, Modal} from 'semantic-ui-react'
 import '../App.css'
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom';
@@ -20,11 +20,10 @@ function UsersPage({posts = [], save}) {
 
 
   const [open, setOpen] = useState(false)
-  const { user, logout } = useContext(AuthContext);
+  const { user} = useContext(AuthContext);
 
 
   const {
-    loading,
     data: { getPosts: postsFromDB } = {}
     } = useQuery(FETCH_POSTS_QUERY);
 

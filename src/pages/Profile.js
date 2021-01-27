@@ -1,15 +1,11 @@
-import React, {useState, useContext, useEffect} from 'react'
-import {Button, Grid, Header, Divider, Image,Icon, Card, Modal, Form, Container} from 'semantic-ui-react'
+import React, {useEffect} from 'react'
+import { Grid, Header, Image} from 'semantic-ui-react'
 import '../App.css'
 import { connect } from 'react-redux'
-import { FETCH_POSTS_QUERY } from '../util/graphql';
 import { GET_ALL_POSTS } from '../redux/actions';
-import { useQuery } from '@apollo/client';
 
 import PostCard from '../components/PostCard';
 
-
-let Globalposts = []
 
 
 const Profile = (props) => {

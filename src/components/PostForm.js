@@ -46,6 +46,13 @@ function PostForm() {
             value={values.title}
             error={error ? true : false}
           />
+            <Form.TextArea
+            placeholder="body..."
+            name="body"
+            onChange={onChange}
+            value={values.body}
+            error={error ? true : false}
+          />
           <Form.Input
             placeholder="Image Link..."
             name="img"

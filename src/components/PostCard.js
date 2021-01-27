@@ -6,7 +6,6 @@ import { AuthContext } from '../context/auth';
 
 import LikeButton from './LikeButton';
 import DeleteButton from './DeleteButton';
-import PopUp from '../util/PopUp';
 import gql from 'graphql-tag';
 
 import { useMutation } from '@apollo/react-hooks';
@@ -78,7 +77,6 @@ function PostCard({
                       <Button animated type="submit" color="green"
                        disabled={comment.trim() === ''}
                        onClick={submitComment}
-                       type="submit"
                        >
                       <Button.Content visible>Submit</Button.Content>
                       <Button.Content hidden>

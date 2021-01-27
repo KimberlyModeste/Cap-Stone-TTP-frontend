@@ -77,15 +77,34 @@ export default function WeatherBar({weatherStuff}) {
     return (
         <div>
          <Table id="banner" style={{ margin:"0 auto 1rem auto",padding:"2rem",borderRadius:"5%", width:"50%", border:"0.2rem solid white"}}>
-             <h1>{area}</h1>
-             <tr><td style={{fontSize:"large"}}>{usaqiwords} <br/><br/><p >{caqiwords}</p></td><td style={{fontSize:"large"}}>
-                {time}
-                <br/>
-                <br/>
-                 <Image src = {link} size="tiny" verticalAlign='middle'/>{temp}
-                 </td></tr>
-                 <tr><td style={{fontSize:"large"}}>{words}</td></tr>
-                 </Table>
+            
+            <thead>  
+                <tr>
+                    <th>{area ? area :null}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    
+                    <td style={{fontSize:"large"}}>
+                        {usaqiwords} 
+                        <br/><br/> 
+                        <p>{caqiwords}</p>
+                    </td>
+                    <td style={{fontSize:"large"}}>
+                        {time}
+                        <br/>
+                        <br/>
+                        <Image src={link} size="tiny" verticalAlign='middle'/>{temp}
+                    </td>
+                </tr>   
+                <tr>
+                    <td style={{fontSize:"large"}}>
+                        {words}
+                    </td>
+                </tr>
+            </tbody>
+        </Table>
         </div>
     )
 }

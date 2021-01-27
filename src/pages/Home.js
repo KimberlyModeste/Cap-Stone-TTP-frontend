@@ -25,36 +25,29 @@ const  Home = ({ save}) => {
 
 
   useEffect(() => {
-
   save(SAVE_ALL_POSTS, postsFromDB)
-
-
-  
   axios
       .get(
-        "https://api.airvisual.com/v2/nearest_city?key=bb37c382-bd04-439e-a6f7-6970a3739b22"
+       "https://api.airvisual.com/v2/nearest_city?key=bb37c382-bd04-439e-a6f7-6970a3739b22"
       )
       .then((res) => {
         setWeather(res.data)
       })
-      .catch((err) => console.log(err));
-    
-  }, [])
+      .catch((err) => console.log("Api Error: ", err));
+  
+  }, [save, postsFromDB])
 
 
 
   return (
-    <>
     <div>
-
       <video src ={vid} autoPlay loop muted/>
-     
       <WeatherBar weatherStuff={weather} /> 
- <ControlledCarousel />
-      <Grid.Row className="page-title">
- <p style={{margin:"0 0 0 0 ", fontFamily:"Impact, fantasy"}}>Trending</p>
+      <ControlledCarousel />
+      <Grid.Row className="page-title" >
+        <p style={{margin:"0 0 0 0 ", fontFamily:"Impact, fantasy"}}>Trending</p>
       </Grid.Row>
-      <Grid.Column centered columns={4}>
+      <Grid.Column  columns={4} >
         {loading ? (
           <p>Loading posts..</p>
         ) : ( 
@@ -63,22 +56,19 @@ const  Home = ({ save}) => {
               postsFromDB.map((post) => (
 
                 <div key={post.id}  >
-                  <Grid>
+                  <Grid >
                   <PostCard post={post} />
                   </Grid>
                 </div> 
               ) )}
           </div>
-          
         )}
       </Grid.Column>
     </div>
-    </>
   );
 }
 
-const mapStateToProps = (state, ownProps) => (
-  console.log("state from home is: ",state),
+const mapStateToProps = (state) => (
 {
   posts: state.posts
 });

@@ -5,7 +5,7 @@ import dateFormat from 'dateformat'
 
 export default function WeatherBar({weatherStuff}) {
   
-    let aqi;
+    let aqi, ic;
     let words, usaqiwords, area, caqiwords, time, temp, link ="https://www.airvisual.com/images/";
     let t = document.getElementById("banner");
 
@@ -14,7 +14,7 @@ export default function WeatherBar({weatherStuff}) {
     if(t !== null && weatherStuff.data!== undefined)
     {
         aqi = weatherStuff.data.current.pollution.aqius;
-
+        ic = weatherStuff.data.current.weather.ic;
         if(aqi <= 50)
         {
 
@@ -61,13 +61,22 @@ export default function WeatherBar({weatherStuff}) {
          words = "Hazardous"
         }
        
+        if(ic==="03n")
+        ic="03d"
+
+        else if(ic==="04n")
+        ic="04d"
+
+        else if(ic==="09n")
+        ic="09d"
+
     
     if(weatherStuff.data.country === "USA")
         temp = (weatherStuff.data.current.weather.tp *(9/5)+35)+"°F"
        
     else
     temp = weatherStuff.data.current.weather.tp+"°C"
-    link = link + weatherStuff.data.current.weather.ic+".png"
+    link = link + ic+".png"
     usaqiwords = "Air Quality Index according to the US: "+ weatherStuff.data.current.pollution.aqius
     caqiwords = "Air Quality Index according to China: "+ weatherStuff.data.current.pollution.aqicn
     words = "Air Quality: " +words;

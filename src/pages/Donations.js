@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, Icon, Confirm } from 'semantic-ui-react';
+import { Button, Form, Icon, Confirm, Message } from 'semantic-ui-react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
@@ -12,9 +12,9 @@ function Donations(props) {
     title: 'Donations',
     img: 'https://cdn4.iconfinder.com/data/icons/care-and-help/50/38-512.png'
   });
-  const [value, setValue] = useState('')
-  let username = props.match.params.username;
+  const [value, setValue] = useState('Wolfo Wildlife Preserve')
   const [confirmOpen, setConfirmOpen] = useState(false);
+  const [confirmation, setConfirmation] = useState(false)
   function handleChange (e)
   {
     setValue(e.target.innerText)
@@ -41,15 +41,18 @@ function Donations(props) {
 
   function createPostCallback() {
     setConfirmOpen(false)
+    setConfirmation(true)
+    setTimeout(setConfirmation, 3000)
     values.body = donationScript
     createPost();
   }
   
-  console.log(values.body)
+  console.log(values.body.split())
   console.log(values)
-  console.log(username+' donated $'+Math.round(values.body *100)/100+' to the '+value+"!")
+  console.log('Donated $'+Math.round(values.body *100)/100+' to the '+value+"!")
   let words = "Are you sure you want to donate $"+values.body+" to "+value+"?";
- let donationScript = username+" donated $"+values.body+" to "+value+"!"
+  let donationScript = "Donated $"+values.body+" to "+value+"!"
+
   return (
     <div style={{width:"30rem", margin:"3rem auto 3rem auto",background:"", borderRadius:"0.5rem"}}>
       <Form className="ui form" onSubmit={() => setConfirmOpen(true)}>
@@ -68,12 +71,12 @@ function Donations(props) {
             onChange={handleChange}
           />
           <Form.Radio
-            label='Air Boy Cleaner Corp.'
+            label='Air Boy Cleaner Corp'
             value ='abcc'
             checked={value === 'Air Boy Cleaner Corp'}
             onChange={handleChange}
           />
-          <Form.Input
+          <Form.Input required
             placeholder="$.$$"
             type="number"
             min="0.01"
@@ -97,6 +100,7 @@ function Donations(props) {
         content ={words}
         onConfirm={createPostCallback}
     />
+    {confirmation ?(<p>Thank You For Kind Donation!!!</p>):("")}
       {error && (
         <div className="ui error message" style={{ marginBottom: 20 }}>
           <ul className="list">

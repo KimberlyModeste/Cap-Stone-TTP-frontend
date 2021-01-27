@@ -32,7 +32,7 @@ const  Home = ({ save}) => {
   
   axios
       .get(
-        "https://api.airvisual.com/v2/nearest_city?key=bb37c382-bd04-439e-a6f7-6970a3739b22"
+       // "https://api.airvisual.com/v2/nearest_city?key=bb37c382-bd04-439e-a6f7-6970a3739b22"
       )
       .then((res) => {
         setWeather(res.data)

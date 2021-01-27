@@ -1,75 +1,87 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {Button, Grid, Header, Divider, Image,Icon, Card, Modal, Form, Container} from 'semantic-ui-react'
 import '../App.css'
 import { connect } from 'react-redux'
+import {Link} from 'react-router-dom';
+
+
+import { FETCH_POSTS_QUERY } from '../util/graphql';
+import { SAVE_ALL_POSTS } from '../redux/actions';
+
+import { useQuery } from '@apollo/client';
 import PostCard from '../components/PostCard';
 import PostForm from '../components/PostForm';
 import { AuthContext } from '../context/auth';
 
-function UsersPage({posts=[]}) {
+
+//let Globalposts = []
+function UsersPage({posts = [], save}) {
+
+
+
   const [open, setOpen] = useState(false)
   const { user, logout } = useContext(AuthContext);
 
 
+  const {
+    loading,
+    data: { getPosts: postsFromDB } = {}
+    } = useQuery(FETCH_POSTS_QUERY);
+
+
+    useEffect(() => {
+      save(SAVE_ALL_POSTS, postsFromDB)
+    
+
+  })
+
 
 return (
-    <div>
+
+    <div style={{backgroundImage: "linear-gradient(#F7F8F8 0%, #ACBB78 100%)"}}>
     <Header as='h2' icon textAlign='center'>
-        <Image src='https://react.semantic-ui.com/images/avatar/small/molly.png' circular />
+        <Image src='https://www.kindpng.com/picc/m/285-2856724_user-avatar-enter-free-photo-user-avatar-green.png' circular />
         <Header.Content>{user ? user.username : null}</Header.Content>
     </Header>
     <Grid>
       
     <Grid.Column textAlign= 'center'>
+      <Button as={Link} to={`/Donations/${user.username}`}>Donation</Button>
     <Modal
+    style={{width:"30rem"}}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
       trigger={
         <Button 
-        >Update Info</Button>}
+        >Show Info</Button>}
       >
-      <Modal.Header>Update Your Information</Modal.Header>
-      <Form /*onSubmit={onSubmit}*/ noValidate>
-        <Container textAlign= 'center' id ="update">
-        
-            <Form.Input
-                label ="Username"
-                placeholder = ".."
-                value = {user ? user.username : null} //make this username
-                type = "text"  
-             /> 
-             <Form.Input
-                label ="Email"
-                placeholder = "...."
-                value = {user ? user.email : null} //make this email
-                type = "text"  
-             /> 
-            <Form.Input
-                label ="Password"
-                placeholder = "Password..."
-                value = "...."  //make this password
-                type = "password"  
-             /> 
-            <Form.Input
-                label ="Confirm Password"
-                placeholder = "Confirm Password..."
-                value = "MollyMoo" //make this the same as password
-                type = "password"  
-             /> 
-        </Container>
-      </Form>
+      <Modal.Header >Your Information</Modal.Header>
+
+      <div class="ui list" style={{alignItems:"center"}}>
+  <div class="item">
+    <i class="user icon"></i>
+    <div class="content">
+    {user ? user.username : null}
+    </div>
+  </div>
+  <div class="item">
+    <i class="marker icon"></i>
+    <div class="content">
+      New York, NY
+    </div>
+  </div>
+  <div class="item">
+    <i class="mail icon"></i>
+    <div class="content">
+      <a href="mailto:jack@semantic-ui.com">{user ? user.email : null} </a>
+    </div>
+  </div>
+</div>
       <Modal.Actions>
         <Button color='black' onClick={() => setOpen(false)}>
-          No
+          Go Back
         </Button>
-        <Button
-          content="Yes"
-          labelPosition='right'
-          icon='checkmark'
-          onClick={() => setOpen(false)}//make this actually update stuff
-          positive
-        />
       </Modal.Actions>
       
     </Modal>
@@ -77,76 +89,38 @@ return (
     </Grid>
     <Divider section />
     <PostForm />
-    <Divider section />
-    {/* 
-    <Grid>
-    <Grid.Column textAlign= 'center'>
-      <Form>
-      <Form.Input 
-      label="Title"
-      placeholder="Enter a Title"
-      name = "title"
-      type = "text"
-      />
-
-      <Form.Input 
-      label="Topic"
-      placeholder="Enter a Topic"
-      name = "topic"
-      type = "text"
-      />
-
-      <Form.TextArea 
-      label="Body"
-      placeholder=""
-      name = "title"
-      type = "text"
-      />
-
-      <Button 
-      onClick={()=>{console.log("hi")}}
-      animated
-      floated='right'
-      >
-      <Button.Content visible>Post</Button.Content>
-      <Button.Content hidden>
-      <Icon name='arrow right' />
-      </Button.Content>
-      </Button>
-      </Form>
-      </Grid.Column>
-      </Grid>
-
-    <Divider section /> */}
 
 
-    <Grid.Column centered columns={4}>   
+    <Grid.Column centered columns={1}>   
           <>
             { 
               posts.map((post) => (
-                post.username === user.username ?
+                user && post.username === user.username ?
                 <div key={post.id}  >
                   <Grid>
                   <PostCard post={post} />
                   </Grid>
                 </div> : null
-              ))}
+              )) 
+           }
           </> 
       </Grid.Column>
      
 
 </div>
-    
 )
-}
+}   
+
+
 const mapStateToProps = (state, ownProps) => (console.log("state is: ",state),{
   posts: state.posts
 });
 const mapDispatchToProps = (dispatch) => { 
   return {
-     //save: () => dispatch({ type:SAVE_ALL_POSTS, payload:Globalposts}),
-     }
+    save: (type,data) => dispatch({ type:type, payload:data}),
+  }
  }
 
 
-export default connect (mapStateToProps)(UsersPage)
+export default connect (mapStateToProps,mapDispatchToProps)(UsersPage)
+

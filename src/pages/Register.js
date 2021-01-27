@@ -112,9 +112,9 @@ function Register(props) {
           error={errors.confirmPassword ? true : false}
           onChange={onChange}
         />
-        <Button type="submit" primary>
-          Register
-        </Button>
+         <Button inverted color='green'>
+        Register
+      </Button>
       </Form>
       {Object.keys(errors).length > 0 && (
         <div className="ui error message">

@@ -58,9 +58,9 @@ function Login(props) {
           error={errors.password ? true : false}
           onChange={onChange}
         />
-        <Button type="submit" primary>
-          Login
-        </Button>
+        <Button inverted color='green'>
+        Login
+      </Button>
       </Form>
       {Object.keys(errors).length > 0 && (
         <div className="ui error message">

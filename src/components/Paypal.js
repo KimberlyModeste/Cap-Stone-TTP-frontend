@@ -34,7 +34,8 @@ export default function Paypal({price}) {
   }, [price])
 
   return (
-      <div ref={paypal}>
+      <div >
+         <div ref={paypal}></div>
       </div>
   )
 }

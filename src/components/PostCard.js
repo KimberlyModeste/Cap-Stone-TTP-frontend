@@ -14,9 +14,6 @@ import { useMutation } from '@apollo/react-hooks';
 function PostCard({
   post: {title, comments , body,img, createdAt, id, username, likeCount, likes }
 }) {
-
-  
-
   const { user } = useContext(AuthContext);
 
   const commentInputRef = useRef(null);

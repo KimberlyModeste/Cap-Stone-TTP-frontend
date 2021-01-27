@@ -44,6 +44,7 @@ return (
         <Header.Content>{user ? user.username : null}</Header.Content>
     </Header>
     <Grid>
+      
     <Grid.Column textAlign= 'center'>
       <Button as={Link} to={`/Donations/${user.username}`}>Donation</Button>
     <Modal
@@ -86,7 +87,9 @@ return (
     </Modal>
     </Grid.Column> 
     </Grid>
+    <Divider section />
     <PostForm />
+
 
     <Grid.Column centered columns={1}>   
           <>

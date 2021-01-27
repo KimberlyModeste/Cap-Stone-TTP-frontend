@@ -10,18 +10,21 @@ export default function WeatherBar({weatherStuff}) {
     let t = document.getElementById("banner");
 
 
+
     if(t !== null && weatherStuff.data!== undefined)
     {
         aqi = weatherStuff.data.current.pollution.aqius;
 
         if(aqi <= 50)
         {
+
          t.style.background = "linear-gradient(to right, #DCE35B 0%, #45B649 100%)"; //green
          //t.style.backgroundImage= "url(https://images.unsplash.com/photo-1524535412680-21809efc44e7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80)"
          t.style.color = "black"
          t.style.width="50%"
          t.style.margin="2rem auto 2rem auto"
          t.style.borderRadius="5%"
+
          words = "Good"
          
         }
@@ -89,4 +92,3 @@ export default function WeatherBar({weatherStuff}) {
                  </Table>
         </div>
     )
-}

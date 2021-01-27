@@ -1,6 +1,5 @@
 import  React  from  'react';
 import  Carousel  from  'semantic-ui-carousel-react';
-import { Image, Button } from  'semantic-ui-react'
 import logo1 from "../assets/Enviromaniacs.png"
 import logo2 from "../assets/Enviromaniacs (1).png"
 import logo3 from "../assets/Enviromaniacs (2).png"

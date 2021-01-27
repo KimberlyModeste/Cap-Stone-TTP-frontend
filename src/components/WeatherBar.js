@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Image, Flag } from 'semantic-ui-react'
+import { Table, Image} from 'semantic-ui-react'
 import dateFormat from 'dateformat'
 
 
@@ -89,3 +89,4 @@ export default function WeatherBar({weatherStuff}) {
         </div>
     )
 }
+

@@ -8,7 +8,7 @@ import { setContext } from 'apollo-link-context';
 import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks'
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:5000'
+  uri: 'https://git.heroku.com/enviromania.git'
 });
 
 const authLink = setContext(() => {

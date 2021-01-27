@@ -1,6 +1,7 @@
 import React, { useEffect , useState} from 'react';
 import axios from "axios";
 import WeatherBar from '../components/WeatherBar'
+
 import { useQuery } from '@apollo/client';
 import { Grid} from 'semantic-ui-react'
 import PostCard from '../components/PostCard';
@@ -27,6 +28,7 @@ const  Home = ({ save}) => {
 
   save(SAVE_ALL_POSTS, postsFromDB)
 
+
   
   axios
       .get(
@@ -40,9 +42,11 @@ const  Home = ({ save}) => {
   }, [])
 
 
+
   return (
     <>
     <div>
+
       <video src ={vid} autoPlay loop muted/>
      
       <WeatherBar weatherStuff={weather} /> 
@@ -57,7 +61,7 @@ const  Home = ({ save}) => {
           <div>
             {
               postsFromDB.map((post) => (
-               
+
                 <div key={post.id}  >
                   <Grid>
                   <PostCard post={post} />
@@ -80,7 +84,8 @@ const mapStateToProps = (state, ownProps) => (
 });
 const mapDispatchToProps = (dispatch) => {
   return {
-     save: (type,data) => dispatch({ type:type, payload:data}),
+    
+    save: (type,data) => dispatch({ type:type, payload:data}),
     }
  }
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -33,8 +33,10 @@ function PostForm() {
   }
 
   return (
+
     <div style={{width:"30rem", margin:"3rem auto 3rem auto",background:"", borderRadius:"0.5rem"}}>
       <Form className="ui form" onSubmit={onSubmit}>
+
         <h2>Create a post:</h2>
         <Form.Field>
         <Form.Input
@@ -45,24 +47,19 @@ function PostForm() {
             error={error ? true : false}
           />
           <Form.Input
-            placeholder="body..."
-            name="body"
-            onChange={onChange}
-            value={values.body}
-            error={error ? true : false}
-          />
-          <Form.Input
             placeholder="Image Link..."
             name="img"
             onChange={onChange}
             value={values.img}
             error={error ? true : false}
           />
+
           <Button animated type="submit" color="green">
           <Button.Content visible>Post</Button.Content>
       <Button.Content hidden>
       <Icon name='arrow right' />
       </Button.Content>
+
           </Button>
         </Form.Field>
       </Form>

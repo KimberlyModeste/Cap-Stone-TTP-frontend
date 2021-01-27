@@ -10,15 +10,18 @@ export default function WeatherBar({weatherStuff}) {
     let t = document.getElementById("banner");
 
 
+
     if(t !== null && weatherStuff.data!== undefined)
     {
         aqi = weatherStuff.data.current.pollution.aqius;
 
         if(aqi <= 50)
         {
+
          t.style.background = "linear-gradient(90deg, #56ab2f 0%, #FFFFFF 100%)"; //green
          //t.style.background= "url(https://png.pngtree.com/thumb_back/fw800/back_pic/00/05/33/86562656f65b38e.png)"
          t.style.color = "black"
+
          words = "Good"
          
         }
@@ -85,4 +88,3 @@ export default function WeatherBar({weatherStuff}) {
                  </Table>
         </div>
     )
-}

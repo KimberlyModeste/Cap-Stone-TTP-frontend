@@ -29,20 +29,21 @@ import Donations from './pages/Donations';
 
   return (
     
-    <AuthProvider>
-    <Provider store={store}>
-      <Router>
-       
-          <MenuBar />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/users" component={UsersPage} />
-          <AuthRoute exact path="/login" component={Login} />
-          <AuthRoute exact path="/register" component={Register} />
-          <Route exact path="/profile/:username" component={Profile}/>
-
-          <Route exact path = "/Donations/:username" component = {Donations}/>
-      </Router>
-    </Provider>
+    <AuthProvider ClassName="App">
+      <div className="main-content">
+          <Provider store={store}>
+          <Router>
+            
+              <MenuBar />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/users" component={UsersPage} />
+              <AuthRoute exact path="/login" component={Login} />
+              <AuthRoute exact path="/register" component={Register} />
+              <Route exact path="/profile/:username" component={Profile}/>
+              <Route exact path = "/Donations/:username" component = {Donations}/>
+          </Router>
+        </Provider>
+     </div>
     </AuthProvider>
   );
 }

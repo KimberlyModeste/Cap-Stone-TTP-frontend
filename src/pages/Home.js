@@ -11,6 +11,8 @@ import { SAVE_ALL_POSTS } from '../redux/actions';
 import vid from "../Pexels Videos 1204911.mp4"
 import ControlledCarousel from "../components/MyCarousel"
 
+import Footer from '../components/Footer';
+
 
 const  Home = ({ save}) => {
 
@@ -28,7 +30,7 @@ const  Home = ({ save}) => {
   save(SAVE_ALL_POSTS, postsFromDB)
   axios
       .get(
-       "https://api.airvisual.com/v2/nearest_city?key=bb37c382-bd04-439e-a6f7-6970a3739b22"
+       //"https://api.airvisual.com/v2/nearest_city?key=b0320179-a664-49b4-8d10-ae01280ebbd3"
       )
       .then((res) => {
         setWeather(res.data)
@@ -64,6 +66,8 @@ const  Home = ({ save}) => {
           </div>
         )}
       </Grid.Column>
+
+     <Footer />
     </div>
   );
 }

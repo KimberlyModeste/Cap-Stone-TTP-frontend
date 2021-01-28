@@ -46,7 +46,7 @@ import { AuthContext } from '../context/auth';
     to="/"
     />
     {/* They are logged in */}
-    <p style={{paddingLeft:"15rem",fontSize: "larger" ,color:"#2A560A", margin:"0.5em auto 0.5em auto"}} >ENVIROMANIA <i className="leaf icon"></i></p>
+    <p style={{paddingLeft:"25%",fontSize: "larger" ,color:"#2A560A", margin:"0.5em auto 0.5em auto"}} >ENVIROMANIA <i className="leaf icon"></i></p>
       
     <Menu.Menu position="right">
      <Menu.Item

@@ -51,7 +51,7 @@ const  Home = ({ save}) => {
       </Grid.Row>
       <Grid.Column  columns={4} >
         {loading ? (
-          <p>Loading posts..</p>
+          <p style={{fontSize:"x-large", margin:"2rem auto 2rem auto" }}>Loading posts..</p>
         ) : ( 
           <div>
             {

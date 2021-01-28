@@ -88,8 +88,8 @@ function Donations(props) {
             value={values.body}
             error={error ? true : false}
           />
-          {checkout ? (
-          <Paypal price = {parseInt(values.body)}/> 
+          {checkout && values.body? (
+          <Paypal price = {values.body}/> 
           ) : (
             <>
            <Button animated type="submit" color="green" >
@@ -107,8 +107,8 @@ function Donations(props) {
           </>
           
           )}
-      <Button animated color="blue" onClick= {()=>{
-             setCheckOut(true)
+      <Button animated color="blue" type="submit" onClick= {()=>{
+             setCheckOut(!checkout)
            }}>
           <Button.Content visible>Pay with Paypal</Button.Content>
           <Button.Content hidden>

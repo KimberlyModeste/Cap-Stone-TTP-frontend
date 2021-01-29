@@ -26,3 +26,10 @@
 ## Donation page:
 
 ![](https://github.com/abdel-elsayed/Cap-Stone-TTP-frontend/blob/master/src/assets/Screen%20Shot%202021-01-28%20at%206.53.09%20PM.png)
+
+## Tech-Stack used:
+* MongoDB
+* ExpressJS
+* ReactJs/Redux
+* NodeJS
+* GraphQl

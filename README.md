@@ -1,5 +1,5 @@
 # [***Enviromania***](https://enviromania.netlify.app/) Social-Media-App/Blog
-## This repo represents the client side of the Cap-Stone project for the Talent-Tech-Pipeline bootcamp, for server-side repo click [HERE](https://github.com/Cap-Stone-TTP-backend)
+## This repo represents the client side of the Cap-Stone project for the Talent-Tech-Pipeline bootcamp, for server-side repo click [HERE](https://github.com/abdel-elsayed/Cap-Stone-TTP_backend)
 
 ![](https://github.com/abdel-elsayed/Cap-Stone-TTP-frontend/blob/master/src/assets/Enviromaniacs.png)    
 

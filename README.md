@@ -37,5 +37,5 @@
 * GraphQl
 
 
-### [Application slide-deck](https://docs.google.com/presentation/d/1deSbx2niKr5YkGY7llPb6nZyx5LYLpeuM_oU9UXj1hg/edit#slide=id.gb473972fc6_0_48)
+### for a full presentation explaining the functionality in the project -> [Application slide-deck](https://docs.google.com/presentation/d/1deSbx2niKr5YkGY7llPb6nZyx5LYLpeuM_oU9UXj1hg/edit#slide=id.gb473972fc6_0_48)
 

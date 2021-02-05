@@ -8,7 +8,6 @@ import PostCard from '../components/PostCard';
 import { FETCH_POSTS_QUERY } from '../util/graphql';
 import {connect} from 'react-redux'
 import { SAVE_ALL_POSTS } from '../redux/actions';
-import vid from "../Pexels Videos 1204911.mp4"
 import ControlledCarousel from "../components/MyCarousel"
 
 import Footer from '../components/Footer';
@@ -44,7 +43,7 @@ const  Home = ({ save}) => {
 
   return (
     <div>
-      <video src ={vid} autoPlay loop muted/>
+      <video src ="https://res.cloudinary.com/dnkxmjpxy/video/upload/v1612548103/Pexels_Videos_1204911_kgmrgx.mp4" autoPlay loop muted/>
       <WeatherBar weatherStuff={weather} /> 
       <ControlledCarousel />
       <Grid.Row className="page-title" >

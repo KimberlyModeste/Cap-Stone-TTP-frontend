@@ -1,5 +1,7 @@
 # [***Enviromania***](https://enviromania.netlify.app/) Social-Media-App/Blog
-## This repo represents the client side of the Cap-Stone project for the Talent-Tech-Pipeline bootcamp, for server-side repo click [HERE](https://github.com/Cap-Stone-TTP-backend)
+## This repo represents the client side of the Cap-Stone project for the Talent-Tech-Pipeline bootcamp, for server-side repo click [HERE](https://github.com/abdel-elsayed/Cap-Stone-TTP_backend)
+
+
 
 ![](https://github.com/abdel-elsayed/Cap-Stone-TTP-frontend/blob/master/src/assets/Enviromaniacs.png)    
 
@@ -21,9 +23,19 @@
 
 ## User's Page:
 
-![]()
+![](https://github.com/abdel-elsayed/Cap-Stone-TTP-frontend/blob/master/src/assets/Screen%20Shot%202021-01-28%20at%206.52.41%20PM.png)
 
 ## Donation page:
 
-![]()
+![](https://github.com/abdel-elsayed/Cap-Stone-TTP-frontend/blob/master/src/assets/Screen%20Shot%202021-01-28%20at%206.53.09%20PM.png)
+
+## Tech-Stack used:
+* MongoDB
+* ExpressJS
+* ReactJs/Redux
+* NodeJS
+* GraphQl
+
+
+### For a full presentation explaining the functionality in the project -> [Application slide-deck](https://docs.google.com/presentation/d/1deSbx2niKr5YkGY7llPb6nZyx5LYLpeuM_oU9UXj1hg/edit#slide=id.gb473972fc6_0_48)
 

@@ -3,7 +3,7 @@
 
 
 
-![](https://res.cloudinary.com/dnkxmjpxy/image/upload/v1612549382/Enviromaniacs_qxfqy8.png)    
+![](https://res.cloudinary.com/dnkxmjpxy/image/upload/w_1000,h_500,c_fill/v1612549382/Enviromaniacs_qxfqy8.png)    
 
 # Authors
 * [Abdelrahman Elsayed](https://github.com/abdel-elsayed)

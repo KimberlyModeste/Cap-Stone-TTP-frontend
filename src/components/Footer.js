@@ -11,14 +11,14 @@ function Footer() {
                 <a
                 rel="noreferrer"
                 class='social-icon-link'
-                href='https://github.com/RoseAsuko'
+                href='https://github.com/KimberlyModeste'
                 target='_blank'
                 > <i class="github icon"></i>
                 </a>
                 <a
                 rel="noreferrer"
                 class='social-icon-link'
-                href='https://www.linkedin.com/in/kimberly-modeste-666999194/'
+                href='www.linkedin.com/in/kimberly-modeste1'
                 target='_blank'
                 > <i class="linkedin icon"></i>
                 </a>
